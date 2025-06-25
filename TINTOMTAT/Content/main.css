@@ -1,0 +1,192 @@
+﻿.user-login{
+    background-color:#d5eff7;
+}
+.log-content{
+    margin:20px;
+}
+.log-content .header{
+    text-align:center;
+    font-weight:bold;
+    font-size:1.2em;
+    cursor:pointer;
+}
+.header-active {
+    color: #9b1616;
+    border-bottom-color: #9b1616;
+}
+.avatar-login {
+    border-radius: 50%;
+    width: 32px;
+    border:1px solid white;
+}
+#info-user-log{
+    cursor:pointer;
+}
+.menu-profile{
+    display:none;
+    width:100px;
+    /*height:150px;*/
+    background-color:black;
+    position:absolute;z-index:99999;
+    left:84%;
+    padding:10px;
+}
+.handel-login{
+
+}
+.button-add-google {
+    background-image: url(https://s1.vnecdn.net/myvne/i/v64/ls/icons/google_ico.svg); /* 16px x 16px */
+    /*background-color: transparent;*/ /* make the button transparent */
+    background-repeat: no-repeat; /* make the background image appear only once */
+    background-position: 60px 5px; /* equivalent to 'top left' */
+    border: none; /* assuming we don't want any borders */
+    cursor: pointer; /* make the cursor like hovering over an <a> element */
+    height: 16px; /* make this the size of your image */
+    padding-left: 16px; /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+    height: 35px;
+}
+
+
+.page-logo {
+    font-size: 1.5rem;
+}
+
+a {
+    font-style: unset;
+    color: lightgreen;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: lightblue !important;
+    }
+
+.nav-bg {
+    background-color: #6667AB;
+}
+
+#main-nav {
+    margin-bottom: 0px;
+}
+
+section {
+    padding: 60px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.name-intro {
+    color: lightgreen;
+}
+
+.front-view {
+    width: 100%;
+    height: 100vh;
+    /* background: url(../img/hero-bg.jpg) top center no-repeat; */
+    background-size: cover;
+    position: relative;
+    padding-top: 82px;
+}
+
+/*#footer {
+    color: #fff;
+    font-size: 14px;
+    background: #111111;
+}*/
+
+.section-bg {
+    padding: 120px 0;
+    color: #fff;
+}
+
+    .section-bg::before {
+        content: "";
+        background: #6667AB;
+        position: absolute;
+        bottom: 60px;
+        top: 60px;
+        left: 0;
+        right: 0;
+        transform: skewY(-3deg);
+    }
+
+.section-title {
+    font-size: 40px;
+    color: lightgreen;
+    margin-bottom: 10px;
+}
+
+.about .icon-boxes .icon-box {
+    margin-top: 30px;
+}
+
+    .about .icon-boxes .icon-box i {
+        font-size: 40px;
+        color: lightgreen;
+        margin-bottom: 10px;
+    }
+
+.back-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99999;
+    width: 50px;
+    height: 50px;
+    background-color: #6667AB;
+    font-size: 20px;
+    border-radius: 15%;
+}
+
+.game-button {
+    background-color: #6667AB;
+    font-size: 20px;
+}
+
+canvas {
+    border: 1px solid #d3d3d3;
+    /* background-color: #f1f1f1; */
+    display: block;
+    vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #6667AB;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+/* Image card */
+.card {
+    height: 200px;
+    width: 200px;
+    background: grey;
+    border-radius: 10px;
+    transition: background 0.8s;
+    overflow: hidden;
+    background: black;
+    box-shadow: 0 70px 63px -60px #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card0 {
+    background: url('https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg') center center no-repeat;
+    background-size: 200px;
+}
+
+    .card0:hover {
+        background: url('https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg') left center no-repeat;
+        background-size: 400px;
+    }
+

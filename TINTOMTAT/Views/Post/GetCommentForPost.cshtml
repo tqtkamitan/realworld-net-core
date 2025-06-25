@@ -1,0 +1,167 @@
+﻿@model IEnumerable<TINTOMTAT.Data.Entites.Comment>
+
+<div class="comment">
+    <p><b>Comment (@Model.Count())</b></p>
+    @using (Html.BeginForm("BinhLuan", "Post", method: FormMethod.Post))
+    {
+        <div class="form-group">
+        <div class="col-md-12" style="padding:0">
+            @Html.Editor("Comment", new { htmlAttributes = new { @class = "form-control", @placeholder = "Bấm vào để bình luận..", @autocomplete = "off" } })
+            @*@Html.ValidationMessageFor(model => model.NoiDungNgan, "", new { @class = "text-danger" })*@
+        </div>
+        <input id="postId" type="hidden" name="postId" value="@ViewBag.BaiVietId" />
+        <input id="thanhVienId" type="hidden" name="thanhVienId" value="@Session["ThanhVienId"]" />
+        <input id="RedirecUrlComt" type="hidden" name="RedirecUrlComt" value="" />
+        <input id="ScrollTop" type="hidden" name="ScrollTop" value="" />
+
+        <button style="margin-top:5px;" class="btn btn-sm btn-success pull-right disabled send-comment">Gửi</button>
+        <p style="font-weight:bold; font-size:1.2em; margin-right:12px;margin-top:9px" class="pull-right name-content"><b>@@@Session["TenThanhVien"]</b></p>
+    </div>
+    }
+    
+    <p>Mặc định mới nhất</p>
+    <hr />
+    @*<div class="row" style="margin-bottom:15px;">
+        <div class="col-md-3" style="width:40px; height:40px; border-radius:50%; border:1px solid grey; background-color:#808080; color:white; font-weight:bold; position:relative">
+            <p style="position:absolute; top:8px; left:15px;">T</p>
+        </div>
+        <div class="col-md-9" style="padding-top:5px;">
+            <p><b style="font-weight:bold; font-size:1.2em; margin-right:5px;">Văn T</b> hay qua di Đọc mà thật sự khủng khiếp , lại một biến chứng của covid , còn virus này quá đổi nguy hiểm , mà không biết thế nào mà tránh , thật quá đáng sợ</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" style="width:40px; height:40px; border-radius:50%; border:1px solid grey; background-color:#b6ff00; color:white; font-weight:bold; position:relative">
+            <p style="position:absolute; top:8px; left:15px;">D</p>
+        </div>
+        <div class="col-md-9" style="padding-top:5px;">
+            <p><b style="font-weight:bold; font-size:1.2em; margin-right:5px;">Văn D</b>Một like cho bài viết</p>
+        </div>
+    </div>*@
+    @foreach (var item in Model)
+    {
+        <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-3 col-xs-3 col-sm-3 avart-color" style="width:40px; height:40px; border-radius:50%; border:1px solid grey; color:white; font-weight:bold; position:relative">
+                <p style="position:absolute; top:8px; left:15px;">@item.Member.DisplayName.Substring(0, 1).ToUpper()</p>
+            </div>
+            <div class="col-md-9 col-xs-9 col-sm-9" style="padding-top:5px;">
+                <p><b style="font-weight:bold; font-size:1.2em; margin-right:5px;">@item.Member.DisplayName</b>@item.CommentData</p>
+            </div>
+        </div>
+
+    }
+</div>
+<script>
+    $(document).ready(function () {
+        @{var topScroll = int.Parse(TempData["ScrollTop"].ToString());}
+        document.body.scrollTop = document.documentElement.scrollTop = @topScroll
+        $("#RedirecUrl").val($(location).attr('href'));
+        $("#RedirecUrlComt").val($(location).attr('href'));
+        $("#ScrollTop").val(document.documentElement.scrollTop);
+        $("#RedirecUrlRegister").val($(location).attr('href'));
+        $("#ReturnUrl").val($(location).attr('href'));
+        $(window).scroll(function (event) {
+            $("#ScrollTop").val(document.documentElement.scrollTop);
+        });
+
+        $(".avart-color").each(function (i, obj) {
+            //test)
+            console.log(obj)
+            switch (obj.innerText) {
+                case 'A':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "red" });
+                    break;
+                case 'B':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "blue" });
+                    break;
+                case 'C':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "grey" });
+                    break;
+                case 'D':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "yellow" });
+                    break;
+                case 'E':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "violet" });
+                    break;
+                case 'F':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "green" });
+                    break;
+                case 'G':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "maroon" });
+                    break;
+                case 'H':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "purple" });
+                    break;
+                case 'I':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "fuchsia" });
+                    break;
+                case 'J':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "lime" });
+                    break;
+                case 'K':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "olive" });
+                    break;
+                case 'L':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "navy" });
+                    break;
+                case 'M':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "aqua" });
+                    break;
+                case 'N':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "bisque" });
+                    break;
+                case 'O':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "chocolate" });
+                    break;
+                case 'P':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "chartreuse" });
+                    break;
+                case 'Q':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "darkcyan" });
+                    break;
+                case 'R':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "darkorange" });
+                    break;
+                case 'S':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "darkorchid" });
+                    break;
+                case 'T':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "darksalmon" });
+                    break;
+                case 'U':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "darkseagreen" });
+                    break;
+                case 'V':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "darkslateblue" });
+                    break;
+                case 'Q':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "darkslategrey" });
+                    break;
+                case 'X':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "dodgerblue" });
+                    break;
+                case 'Y':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "goldenrod" });
+                    break;
+                case 'Z':
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "hotpink" });
+                    break;
+                default:
+                    $(".avart-color:eq("+i+")").css({ "backgroundColor": "lightcyan" });
+                    break;
+            }
+        });
+
+    });
+    if ('@Session["TenThanhVien"]' == null || '@Session["TenThanhVien"]' == "") {
+        $(".name-content").hide();
+    } else {
+        $(".send-comment").removeClass("disabled")
+    }
+
+    $("#Comment").click(function () {
+        if ('@Session["TenThanhVien"]' == null || '@Session["TenThanhVien"]' == "") {
+            $(".user-login").toggle();
+        }
+    })
+
+</script>

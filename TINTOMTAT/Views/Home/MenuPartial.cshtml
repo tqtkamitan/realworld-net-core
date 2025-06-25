@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TINTOMTAT.Models.PostType.PostTypeViewModel>
+<style>
+    .top-menu ul li a {
+        background: #1e2560;
+        color: white;
+    }
+</style>
+<div class="container top-menu">
+    <div class="row lol2">
+        <div class="home-page col-md-3 col-sm-10 col-xs-10 offset-1">
+            <a class="home-page-href" href="@Url.Action("Index","Home")" title="Home">
+                <div class="logo">
+                    <h1>Demo</h1>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-8 col-sm-1 col-xs-1">
+            <div class="menu text-right hidden-sm hidden-xs">
+                <ul>
+                    @foreach (var item in Model)
+                    {
+                        var url = "/Category/" + item.Alias + ".html";
+                        <li><a href="@url">@item.PostTypeName</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row lol">
+        <div class="col-md-6 col-sm-6 col-xs-6 responsive-menu pull-right text-right visible-xs visible-sm">
+            <a href="#" class="toggle-menu fa fa-bars"></a>
+            <div class="menu">
+                <ul>
+                    @foreach (var item in Model)
+                    {
+                        var url = "/Category/" + item.Alias + ".html";
+                        <li><a href="@url">@item.PostTypeName</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>    
+</div>

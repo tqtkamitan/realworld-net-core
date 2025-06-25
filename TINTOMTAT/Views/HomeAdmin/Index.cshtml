@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    @if (ViewBag.userName != null)
+    {
+        <div class="col-md-offset-2 col-md-8" style="text-align:center">
+            <img src="~/Content/images/home-admin.jpg" style="width:50%" />
+        </div>
+        <div class="col-md-offset-2 col-md-8" style="text-align:center">
+            <marquee>Chào mừng đã đăng nhập</marquee>
+            <hr />
+            <br />
+            Người dùng: @ViewBag.userName
+        </div>
+    }
+    else
+    {
+        <div class="col-md-offset-2 col-md-8" style="text-align:center">
+            <h4>Vui lòng đăng nhập</h4> <br />
+            @Html.ActionLink("Đăng nhập", "Login", "Auth", null, null)
+        </div>
+    }
+</div>

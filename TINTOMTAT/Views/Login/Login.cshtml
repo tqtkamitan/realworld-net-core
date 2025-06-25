@@ -1,0 +1,124 @@
+﻿@using Microsoft.Owin.Security
+<div class="user-login" style="height:auto; width:80%; position:fixed; top:20%; left:11%; z-index:9999; display:none;">
+    <div class="close-login" style="font-weight:800; position:absolute; z-index:99999; width:25px; height:25px;background-color:#ff6a00;left:97.7%;padding-left:8px; cursor:pointer">
+        X
+    </div>
+    <div class="row log-content">
+        <div class="col-md-6 login-left" style="border-right:1px solid black">
+            <div class="header header-login-left header-active">
+                <p class="text-login"><b>Đăng nhập</b></p>
+            </div>
+            <div class="header header-register-left  header-active" style="display:none">
+                <p class="text-register"><b>Đăng Kí</b></p>
+            </div>
+            <hr />
+            <div style="padding-top:10px;">
+                <div class="handel-login">
+                    <h3>Đăng nhập với email</h3>
+                    @using (Html.BeginForm("Index", "Login", method: FormMethod.Post))
+                    {
+                        <input id="user-name" type="text" class="form-control" name="UserName" value="" placeholder="Email" />
+                        <br />
+                        <input id="password" type="password" class="form-control" name="Password" value="" placeholder="Mật khẩu" />
+                        <br />
+                        <input id="RedirecUrl" type="hidden" name="RedirecUrl" value="" />
+                        <button type="submit" style="width:100%" class="btn btn-primary">Đăng nhập</button>
+                    }
+                    <br />
+                    <br />
+                    <div style="text-align:center">
+                        @*<p>lấy lại mật khẩu</p>*@
+                    </div>
+                </div>
+                <div class="handel-register" style="display:none;">
+                    <h3>Đăng kí tài khoản</h3>
+                    @using (Html.BeginForm("Register", "Login", method: FormMethod.Post))
+                    {
+                        <input id="user-name" type="email" class="form-control" name="UserName" value="" placeholder="Email" />
+                        <br />
+                        <input id="password" type="password" class="form-control" name="Password" value="" placeholder="Mật khẩu" />
+                        <br />
+                        <input id="RedirecUrlRegister" type="hidden" name="RedirecUrl" value="" />
+                        <button type="submit" style="width:100%" class="btn btn-primary">Đăng kí</button>
+                    }
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="header header-register-right">
+                <p class="text-login-click"><b>Đăng kí tài khoản</b></p>
+            </div>
+            <div class="header header-login-right" style="display:none">
+                <p class="text-register-click"><b>Đăng nhập</b></p>
+            </div>
+            <hr />
+            <div style="padding-top:10px;">
+                <h3><b>Đăng nhập với</b></h3>
+                @*<button style="width:100%" class="btn btn-primary">Facebook</button>*@
+                @*@{
+                        var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+                        using (Html.BeginForm("ExternalLogin", "Login", new { ReturnUrl = "dsds" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div id="socialLoginList">
+                                <p>
+                                    @foreach (AuthenticationDescription p in loginProviders)
+                                    {
+                                        <button style="width:100%" type="submit" class="login-google btn btn-primary" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                                    }
+                                </p>
+                            </div>
+                        }
+                    }*@
+                <br />
+                <br />
+                @*<button style="width:100%" class="btn btn-primary">Google</button>*@
+
+                @{
+                    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+                    using (Html.BeginForm("ExternalLogin", "Login", method: FormMethod.Post))
+                    {
+                        <input id="ReturnUrl" type="hidden" name="ReturnUrl" value="" />
+                        <input id="ScrollTopLogin" type="hidden" name="ScrollTop" value="" />
+                        @Html.AntiForgeryToken()
+                        <div id="socialLoginList">
+                            <p>
+                                @foreach (AuthenticationDescription p in loginProviders)
+                                {
+                                    <button style="width:50%" type="submit" class="login-google button-add-google btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
+                                }
+                            </p>
+                        </div>
+                    }
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".header-register-right").click(function () {
+            $(".handel-login").hide();
+            $(".handel-register").show();
+
+            $(".header-login-left").hide();
+            $(".header-register-left").show();
+
+            $(".header-login-right").show();
+            $(".header-register-right").hide();
+        })
+        $(".header-login-right").click(function () {
+            $(".handel-login").show();
+            $(".handel-register").hide();
+
+            $(".header-login-left").show();
+            $(".header-register-left").hide();
+
+            $(".header-login-right").hide();
+            $(".header-register-right").show();
+        })
+    })
+</script>

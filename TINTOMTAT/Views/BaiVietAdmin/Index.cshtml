@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TINTOMTAT.Models.PostViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Bài viết</h4>
+        </div>
+        <div class="col-md-8 d-flex flex-row-reverse">
+            @Html.ActionLink("Thêm mới", "ThemBaiViet", "BaiVietAdmin", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Id</th>
+                    <th>Tên bài viết</th>
+                    <th>Danh mục</th>
+                    <th>Hình ảnh</th>
+                    <th>Lượt xem</th>
+                    <th>Ngày tạo</th>
+                    <th>Thứ tự trang chủ</th>
+                    <th>Thứ tự hiển thị</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.PostName</td>
+                        <td>@item.PostTypeName</td>
+                        <td>
+                            <img src="@item.PostImage" height="65" alt="Alternate Text" />
+                        </td>
+                        <td>@item.View</td>
+                        <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                        <td>@item.HomePageOrder</td>
+                        <td>@item.Order</td>
+                        <td>
+                            @Html.ActionLink("Sửa", "SuaBaiViet", "BaiVietAdmin", new { @id = item.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Xóa", "XoaBaiViet", "BaiVietAdmin", new { @id = item.Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

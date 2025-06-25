@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TINTOMTAT.Models.ThanhViens.ThanhVienViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Bài viết</h4>
+        </div>
+        <div class="col-md-8 d-flex flex-row-reverse">
+            @*@Html.ActionLink("Thêm mới", "ThemBaiViet", "BaiVietAdmin", null, new { @class = "btn btn-primary" })*@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Id</th>
+                    <th>Tên thành viên</th>
+                    <th>Email</th>
+                    <th>Ngày tạo</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.TenThanhVien</td>
+                        <td>@item.Email</td>   
+                        <td>@item.NgayTaoDisplay</td>
+                        <td>@item.IsDeletedDisplay</td>
+                        <td>
+                            @Html.ActionLink("Sửa", "Sua", "ThanhVienAdmin", new { @id = item.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Xóa", "Xoa", "ThanhVienAdmin", new { @id = item.Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
